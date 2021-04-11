@@ -1,0 +1,138 @@
+<!-- this is a test site -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TicTacLy</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/tictac.css">
+    
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="container">
+            <a class="logo" href="index.html">Machine<span>Ly</span></a>
+
+            <img id = "mobile-cta" class="mobile-menu" src="images/menu.svg" alt="Open Navigation">
+
+            <nav>
+                <img id = "mobile-exit" class="mobile-menu-exit" src="images/exit.svg" alt="Close Navigation">
+                <ul class = "primary-nav">
+                    <li class="current"><a href="index.html">Home</a></li>
+                    <li><a href="tictactoe.html">TicTacLy</a></li>
+                    <li><a href="8puzzle.html">8Ly</a></li>
+                </ul>
+                <!-- <img id = "mute" class="audiomute" src="images/mute.svg"> -->
+                
+                <ul class = "secondary-nav">
+                    <li><a href="#">Contact</a></li>
+                    <li class="go-premium-cta"><a href="#">Get Codes</a></li>
+                    
+                </ul>
+
+            </nav>
+
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="container">
+            <div class="left-col">
+                <p class="subhead">Can you beat the AI?</p>
+                <h1>Unbeaten Till<br> Date </h1>
+
+                <div class="hero-cta">
+                    <a href="#" class="primary-cta">Play Now!</a>
+                    <a href="#" class="watch-video-cta">
+                        <img src="images/watch.svg" alt="Watch a video">Watch a Video
+                    </a>
+                </div>
+            </div>
+
+            <img src="images/tic-tac-toe.svg" class="hero-img" alt="Illustration">
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="container">
+            <!-- <div class="title"><h1>Before you begin..</h1></div> -->
+            <ul class="features-list"> 
+                <li>You play as O</li>
+                <li>The Aritificial Intelligence will play as X</li>
+                <li>TicTac<span>Ly</span> will try to beat you or make it a draw</li>
+                <li>Spoiler alert: Winning is Impossible :)</li>
+                
+            </ul>
+
+            
+        </div>
+        
+        <hr class="divider">
+    </section>
+    
+    <section class="tic-section"> <!-- similar to body-->
+        <marquee behavior="scroll" scrollamount="20" direction="left" class="tictactoemarquee">TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY TICTACLY </marquee> 
+        <h1 class="title">Tic <span>Tac</span> Toe</h2>
+        <div class="container">   
+            <div class="status-action">
+                <div class="status">
+                    beat the <span>ai</span> 
+                </div>
+                
+                <div class="reset" id="titlereset">Reset</div>
+            </div>
+            <div class="game-grid"> 
+                <div class="game-cell" id="0"></div>
+                <div class="game-cell" id="1"></div>
+                <div class="game-cell" id="2"></div>
+                <div class="game-cell" id="3"></div>
+                <div class="game-cell" id="4"></div>
+                <div class="game-cell" id="5"></div>
+                <div class="game-cell" id="6"></div>
+                <div class="game-cell" id="7"></div>
+                <div class="game-cell" id="8"></div>
+            </div>
+        </div>
+        
+    </section> <!--/body-->
+
+    <section class="description-section">
+        <div class="container">
+            <h1>Why Can't I Beat It?</h1>
+
+            <div class="description">
+                <p> Many believe that Tic-Tac-Toe is a game of chance. But in reality, this is not the case. Any game, whose entire outcomes can be figured out, can easily be conquered. And Tic-Tac-Toe is one such game.</p>
+                <p> There are <span style="color: yellow">255,168</span> unique games of Tic-Tac-Toe. Computers being fast, dont even take considerable amount of time to examine all those individual states. So, with that being said, lets see why you weren't able to beat the <span style="color:#66FCF1">AI</span>.</p>
+                <p> TicTac<span style="color: #09CA13">Ly</span> examines all the existing states of Tic-Tac-Toe and makes the move according to the human player's. TicTac<span style="color: #09CA13">Ly</span> has only been fed with the rules of the game as constraints. The move that it makes heavily depends on an algorithm called <span style="color:#66FCF1">Minimax</span>.</p>
+                <p><span style="color:#66FCF1">Minimax</span> algorithm suggests the <span style="color:#66FCF1">AI</span> to play <span style="color: yellow">the most optimal move</span> considering that the human player has <span style="color: yellow">already made an optimal move</span>. So, whenever you try to win by matching the three Os together, you simply can't since the <span style="color:#66FCF1">AI</span> has already foreseen it and plays in such a way that you can't win. Interestingly, I haven't taught the <span style="color:#66FCF1">AI</span> to block or create traps. <span style="color:#66FCF1">It figures it out on its own</span>.</p>
+
+            </div>
+        </div>
+    </section>
+    
+
+
+
+
+    <script src="js/app.js"></script>
+    <script>
+        const mobileBtn = document.getElementById('mobile-cta')
+                nav = document.querySelector('nav')
+                mobileBtnExit = document.getElementById('mobile-exit');
+        
+        mobileBtn.addEventListener('click',() =>{
+            nav.classList.add('menu-btn')
+        })
+
+        mobileBtnExit.addEventListener('click',() =>{
+            nav.classList.remove('menu-btn')
+        })        
+    </script>
+    <script src="js/fade2.js"></script>
+
+</body>
+
+</html>

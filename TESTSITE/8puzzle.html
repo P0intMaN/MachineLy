@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>8Ly</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/8puzzle.css">
+    
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="container">
+            <a class="logo" href="index.html">Machine<span>Ly</span></a>
+
+            <img id = "mobile-cta" class="mobile-menu" src="images/menu.svg" alt="Open Navigation">
+
+            <nav>
+                <img id = "mobile-exit" class="mobile-menu-exit" src="images/exit.svg" alt="Close Navigation">
+                <ul class = "primary-nav">
+                    <li class="current"><a href="index.html">Home</a></li>
+                    <li><a href="tictactoe.html">TicTacLy</a></li>
+                    <li><a href="8puzzle.html">8Ly</a></li>
+                    <li><a href="#">Pricing</a></li>
+                </ul>
+                <!-- <img id = "mute" class="audiomute" src="images/mute.svg"> -->
+                
+                <ul class = "secondary-nav">
+                    <li><a href="#">Contact</a></li>
+                    <li class="go-premium-cta"><a href="#">Get Codes</a></li>
+                    
+                </ul>
+
+            </nav>
+
+        </div> 
+    </div>
+
+    <section class="hero">
+        <div class="container">
+            <div class="left-col">
+                <p class="subhead">Let the AI assist you</p>
+                <h1>Solve The 8Puzzle Problem</h1>
+
+                <div class="hero-cta">
+                    <a href="#" class="primary-cta">Play Now!</a>
+                    <a href="#" class="watch-video-cta">
+                        <img src="images/watch.svg" alt="Watch a video">Watch a Video
+                    </a>
+                </div>
+            </div>
+
+            <img src="images/8puzzle.svg" class="hero-img" alt="Illustration">
+        </div>
+    </section>
+
+
+
+
+    <section class="features-section">
+        <div class="container">
+            <!-- <div class="title"><h1>Before you begin..</h1></div> -->
+            <ul class="features-list"> 
+                <li>There are 9 blocks. 8 of them are numbered and one is left intentionally blank</li>
+                <li>You have to arrange each block sequentially starting from 1 at top left. The blank block should come at the last i.e. after 8th block</li>
+                <li>You can navigate the blank space by using the control buttons adjascent to the board</li>
+                <li>Try to solve the problem.</li>
+                <li>Stuck? You can press the <span style="color: #ffc506">TAKE CONTROL </span>and 8Ly will show your way out.</li>
+                <li>All the problems are solvable.</li>
+            </ul>    
+        </div>
+        
+        <!-- <hr class="divider"> -->
+    </section>
+
+    <section class="eightpuzzle-section"> <!-- similar to body-->
+        <h1 class="title">Solve the 8Puzzle</h1>
+        <div class="container" id="container">
+            <ul>
+                <li class="cell empty" id="0"></li>
+                <li class="cell" id="1">1</li>
+                <li class="cell" id="2">2</li>
+                <li class="cell" id="3">3</li>
+                <li class="cell" id="4">4</li>
+                <li class="cell" id="5">5</li>
+                <li class="cell" id="6">6</li>
+                <li class="cell" id="7">7</li>
+                <li class="cell" id="8">8</li>
+            </ul>
+
+            <div class="controlbtn"><a href="#" class="takecontrol" id="takecontrol">Take Control!</a></div>
+        </div>
+        <div class="movementbtns">
+            <ul> 
+              <li class="up" >
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span class="fa fa-arrow-up" id="up"></span>
+ 
+              </li>
+              <li class="left" >
+                
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span class="fa fa-arrow-left" id="left"></span>
+                
+              </li>
+              <li class="right" >
+                
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span class="fa fa-arrow-right" id="right"></span>
+                
+              </li>
+              <li class="down" >
+                
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span class="fa fa-arrow-down" id="down"></span>
+                
+              </li>
+            </ul>  
+          </div> 
+          
+        
+    </section> <!--/body-->
+
+
+
+    <section class="description-section">
+        <div class="container">
+            <h1>How Does It Know The Way Out?</h1>
+
+            <div class="description">
+                <p> Many believe that Tic-Tac-Toe is a game of chance. But in reality, this is not the case. Any game, whose entire outcomes can be figured out, can easily be conquered. And Tic-Tac-Toe is one such game.</p>
+                <p> There are <span style="color: yellow">255,168</span> unique games of Tic-Tac-Toe. Computers being fast, dont even take considerable amount of time to examine all those individual states. So, with that being said, lets see why you weren't able to beat the <span style="color:#66FCF1">AI</span>.</p>
+                <p> TicTac<span style="color: #09CA13">Ly</span> examines all the existing states of Tic-Tac-Toe and makes the move according to the human player's. TicTac<span style="color: #09CA13">Ly</span> has only been fed with the rules of the game as constraints. The move that it makes heavily depends on an algorithm called <span style="color:#66FCF1">Minimax</span>.</p>
+                <p><span style="color:#66FCF1">Minimax</span> algorithm suggests the <span style="color:#66FCF1">AI</span> to play <span style="color: yellow">the most optimal move</span> considering that the human player has <span style="color: yellow">already made an optimal move</span>. So, whenever you try to win by matching the three Os together, you simply can't since the <span style="color:#66FCF1">AI</span> has already foreseen it and plays in such a way that you can't win. Interestingly, I haven't taught the <span style="color:#66FCF1">AI</span> to block or create traps. <span style="color:#66FCF1">It figures it out on its own</span>.</p>
+
+            </div>
+        </div>
+    </section>
+    <script src="js/8puzzle.js"></script>
+    
+
+</body>

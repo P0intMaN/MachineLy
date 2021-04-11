@@ -1,0 +1,135 @@
+<!-- this is the test site -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="container">
+            <a class="logo" href="#">Machine<span>Ly</span></a>
+
+            <img id = "mobile-cta" class="mobile-menu" src="images/menu.svg" alt="Open Navigation">
+
+            <nav>
+                <img id = "mobile-exit" class="mobile-menu-exit" src="images/exit.svg" alt="Close Navigation">
+                <ul class = "primary-nav">
+                    <li class="current"><a href="#">Home</a></li>
+                    <li><a href="tictactoe.html">TicTacLy</a></li>
+                    <li><a href="8puzzle.html">8Ly</a></li>
+                </ul>
+                <img id = "mute" class="audiomute" src="images/mute.svg">
+                <ul class = "secondary-nav">
+                    <li><a href="#">Contact</a></li>
+                    <li class="go-premium-cta"><a href="#">Get Codes</a></li>
+                    
+                </ul>
+
+            </nav>
+
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="container">
+            <div class="left-col">
+                <p class="subhead">An AI Embedded Site</p>
+                <h1>See The Power of <span id="titleai">AI</span> </h1>
+
+                <div class="hero-cta">
+                    <a href="#" class="primary-cta">Try for free</a>
+                    <a href="#" class="watch-video-cta">
+                        <img src="images/watch.svg" alt="Watch a video">Watch a Video
+                    </a>
+                </div>
+            </div>
+
+            <img src="images/dna.svg" class="hero-img" alt="Illustration">
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="container">
+            <ul class="features-list"> 
+                <li>Unlimited Tasks</li>
+                <li>SMS</li>
+                <li>Confetti explosions upon task completions</li>
+                <li>Social Media Announcements</li>
+                <li>Real Time Collaboration</li>
+                <li>Other awesome features</li>
+            </ul>
+
+            <img src="images/processor.svg" alt="man holding phone">
+        </div>
+    </section>
+
+
+    <section class="testimonials-section">
+        <div class="container">
+            <ul>
+                <li>
+                    <img src="images/person.jpg" alt="Person">
+                    <blockquote>"A quote that can inspirekdjfsjfdslfjsdlfjsdlf sdlkfjlkjdf lkjdflkjsdflkjsdf  sdlkfjljlkdfjlkjdf  sdlkjlkjdf  dflkjlkjdfjsdlkjfdjfl"</blockquote>
+                    <cite>- John Doe</cite>
+                </li>
+                <li>
+                    <img src="images/person.jpg" alt="Person">
+                    <blockquote>"A quote that can inspirekdjfsjfdslfjsdlfjsdlf sdlkfjlkjdf lkjdflkjsdflkjsdf  sdlkfjljlkdfjlkjdf  sdlkjlkjdf  dflkjlkjdfjsdlkjfdjfl"</blockquote>
+                    <cite>- John Doe</cite>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-left">
+                <h2>Contact</h2>
+
+                <form action="">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name">
+
+                    <label for="message">Message</label>
+                    <textarea name="message" id="message" cols="30" rows="10"></textarea>
+
+                    <input type="submit" class="send-message-cta" value="Send Message">
+
+                </form>
+            </div>
+
+            <div class="contact-right">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3410.726399109953!2d75.7029548156061!3d31.25599656727517!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a5f5e9c489cf3%3A0x4049a5409d53c300!2sLovely%20Professional%20University!5e0!3m2!1sen!2sin!4v1616562959604!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+
+        </div>
+    </section>
+
+    <audio  id="player" loop >
+        <source src='audio/pylot.mp3' type='audio/mpeg'/>
+    </audio>
+
+    <script>
+        const mobileBtn = document.getElementById('mobile-cta')
+                nav = document.querySelector('nav')
+                mobileBtnExit = document.getElementById('mobile-exit');
+        
+        mobileBtn.addEventListener('click',() =>{
+            nav.classList.add('menu-btn')
+        })
+
+        mobileBtnExit.addEventListener('click',() =>{
+            nav.classList.remove('menu-btn')
+        })        
+    </script>
+    <script src="js/fade.js"></script>
+    <script src="js/general.js"></script>
+</body>
+
+</html>
