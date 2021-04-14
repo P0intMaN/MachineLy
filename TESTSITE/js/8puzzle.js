@@ -7,6 +7,8 @@ buttons.push(document.querySelector('.fa.fa-arrow-up'),document.querySelector('.
 
 //ingame variables
 var realBoard = [];
+var solvedBoard= [1, 2, 3, 4, 5, 6, 7, 8, 0];
+var steps = [];
 var aiNotSolving;
 
 //functions
@@ -17,7 +19,7 @@ function playGame(){
         button.addEventListener('click',clickHandler)
     }
     aiTurn.addEventListener('click',helpmeHandler)
-    realBoard = validBoardGenerator()
+    realBoard = validBoardGenerator();
     fillBoard();
     userPlays();
     
@@ -72,20 +74,262 @@ function fillBoard(){
     }
 }
 
+function gameOverCopy(real){
+    var count = 0;
+    for(var i=0; i<9; i++)
+    {
+        if(real[i] == solvedBoard[i])
+        {
+            count++;
+        }
+    }
+    if (count == 9){
+        return 0;
+    }
+    else
+    return 1;
+}
+
+function compare(a, b){
+    for(var i=0; i<a.length; i++)
+    {
+        if (a[i] != b[i]){
+            return 1;
+        }
+    }
+    return 0;
+}
+
+function heuristics(real){
+    var sum = 0;
+    for(var i = 0; i<real.length; i++){
+        var val = real[i];
+        if (val != 0){
+            sum += Math.abs((val-1)%3 - i%3);
+            sum += Math.abs(Math.floor((val-1)/3) - Math.floor(i/3));
+        }
+    }
+    return sum;
+}
+
+function min(real){
+    var mini = 99999999;
+    for(var i=0; i<real.length; i++){
+        if(real[i]<mini){
+            mini = real[i];
+            var pos = i;
+        }
+    }
+    return pos;
+}
+
 function aiSolves(){
+    let realBoardCopy = [];
+    let openlist = [];                   //contains steps
+    let openLIST = [];                   //contains slice(0, 8)
+    let closedlist = [];
+    let x = [];
+    let heuristiclist = [];
+
+    realBoardCopy = realBoard.slice();
+    let zeroIndex = emptySquare(realBoardCopy);
+    realBoardCopy.push(zeroIndex);
+
+    openlist.push(realBoardCopy);
+    x = openlist.shift();
+    
+    while(gameOverCopy(x.slice(0, 9)))  
+    {
+        zeroIndex = x[9];
+        if (zeroIndex - 3 >= 0)                         //up
+        {
+            let ss1 = [];                            
+            ss1 = x.slice();
+            var temp = ss1[zeroIndex];
+            ss1[zeroIndex] = ss1[zeroIndex - 3];
+            ss1[zeroIndex - 3] = temp;
+            ss1[9] = ss1[9] - 3;
+            ss1.push("UP");
+            if(!gameOverCopy(ss1.slice(0, 9))){
+                steps = ss1.slice(10);
+                break;
+            }
+            var j;
+            for(var i=0; i<closedlist.length; i++){
+                j = compare(ss1.slice(0, 9), closedlist[i]);
+                if (j == 0)
+                {
+                    //means there is a match
+                    break;
+                }
+            }
+            if(j!=0){
+                openlist.push(ss1);
+                openLIST.push(ss1.slice(0, 9));
+                heuristiclist.push(heuristics(ss1.slice(0, 9)));
+            }
+
+        }
+
+        if (zeroIndex + 3 <= 8)                         //down
+        {
+            let ss1 = [];                            
+            ss1 = x.slice();
+            var temp = ss1[zeroIndex];
+            ss1[zeroIndex] = ss1[zeroIndex + 3];
+            ss1[zeroIndex + 3] = temp;
+            ss1[9] = ss1[9] + 3;
+            ss1.push("DOWN");
+            if(!gameOverCopy(ss1.slice(0, 9))){
+                steps = ss1.slice(10);
+                break;
+            }
+            var j;
+            for(var i=0; i<closedlist.length; i++){
+                j = compare(ss1.slice(0, 9), closedlist[i]);
+                if (j == 0)
+                {
+                    //means there is a match
+                    break;
+                }
+            }
+            if(j!=0){
+                openlist.push(ss1);
+                openLIST.push(ss1.slice(0, 9));
+                heuristiclist.push(heuristics(ss1.slice(0, 9)));
+            }
+
+        }
+
+        if (zeroIndex % 3 != 0)                         //left
+        {
+            let ss1 = [];                            
+            ss1 = x.slice();
+            var temp = ss1[zeroIndex];
+            ss1[zeroIndex] = ss1[zeroIndex - 1];
+            ss1[zeroIndex - 1] = temp;
+            ss1[9] = ss1[9] - 1;
+            ss1.push("LEFT");
+            if(!gameOverCopy(ss1.slice(0, 9))){
+                steps = ss1.slice(10);
+                break;
+            }
+            var j;
+            for(var i=0; i<closedlist.length; i++){
+                j = compare(ss1.slice(0, 9), closedlist[i]);
+                if (j == 0)
+                {
+                    //means there is a match
+                    break;
+                }
+            }
+            if(j!=0){
+                openlist.push(ss1);
+                openLIST.push(ss1.slice(0, 9));
+                heuristiclist.push(heuristics(ss1.slice(0, 9)));
+            }
+
+        }
+
+        if (zeroIndex % 3 != 2)                         //right
+        {
+            let ss1 = [];                            
+            ss1 = x.slice();
+            var temp = ss1[zeroIndex];
+            ss1[zeroIndex] = ss1[zeroIndex + 1];
+            ss1[zeroIndex + 1] = temp;
+            ss1[9] = ss1[9] + 1;
+            ss1.push("RIGHT");
+            if(!gameOverCopy(ss1.slice(0, 9))){
+                steps = ss1.slice(10);
+                break;
+            }
+            var j;
+            for(var i=0; i<closedlist.length; i++){
+                j = compare(ss1.slice(0, 9), closedlist[i]);
+                if (j == 0)
+                {
+                    //means there is a match
+                    break;
+                }
+            }
+            if(j!=0){
+                openlist.push(ss1);
+                openLIST.push(ss1.slice(0, 9));
+                heuristiclist.push(heuristics(ss1.slice(0, 9)));
+            }
+
+        }
+
+        closedlist.push(x.slice(0, 9));
+        var pos = min(heuristiclist);
+        x = openlist[pos];
+        openlist.splice(pos, 1);
+        var tem = heuristiclist.splice(pos, 1);
+        
+    }
+
+    console.log(steps);
+    stepsolve();
      
 }
 
+function stepsolve(){
+    var i = 0;                  
 
-function emptySquare(){
-    for(var i=0;i<realBoard.length;i++){
-        if(realBoard[i] == 0){
+    function myLoop() {         
+      setTimeout(function() {   
+        action(i);   
+        i++;                    
+        if (i < steps.length) { 
+          myLoop();              
+        }                       
+      }, 500)
+    }
+    
+    myLoop();  
+}
+
+function action(i){
+    var zero = emptySquare(realBoard);
+        
+    if (steps[i] == "UP"){
+        var temp = realBoard[zero];
+        realBoard[zero] = realBoard[zero-3];
+        realBoard[zero-3] = temp;
+    }
+
+    if (steps[i] == "DOWN"){
+        var temp = realBoard[zero];
+        realBoard[zero] = realBoard[zero+3];
+        realBoard[zero+3] = temp;
+    }
+
+    if (steps[i] == "LEFT"){
+        var temp = realBoard[zero];
+        realBoard[zero] = realBoard[zero-1];
+        realBoard[zero-1] = temp;
+    }
+
+    if (steps[i] == "RIGHT"){
+        var temp = realBoard[zero];
+        realBoard[zero] = realBoard[zero+1];
+        realBoard[zero+1] = temp;
+    }
+    fillBoard();
+}
+
+
+function emptySquare(real){
+    for(var i=0;i<9;i++){
+        if(real[i] == 0){
             return i;
         }
     }
 }
 
 function userPlays(){
+    aiSolves();
     if(checkWin()){
         gameOver();
     }
