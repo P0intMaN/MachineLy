@@ -67,8 +67,9 @@
                 <li>You have to arrange each block sequentially starting from 1 at top left. The blank block should come at the last i.e. after 8th block</li>
                 <li>You can navigate the blank space by using the control buttons adjascent to the board</li>
                 <li>Try to solve the problem.</li>
-                <li>Stuck? You can press the <span style="color: #ffc506">TAKE CONTROL </span>and 8Ly will show your way out.</li>
+                <li>Stuck? You can press the <span style="color: #ffc506">TAKE CONTROL </span>and 8<span style="color:#BE073F">Ly</span> will show your way out.</li>
                 <li>All the problems are solvable.</li>
+                
             </ul>    
         </div>
         
@@ -90,7 +91,9 @@
                 <li class="cell" id="8">8</li>
             </ul>
 
-            <div class="controlbtn"><a href="#" class="takecontrol" id="takecontrol">Take Control!</a></div>
+                <div class="controlbtn">Take Control!</div>
+
+            
         </div>
         <div class="movementbtns">
             <ul> 
@@ -142,14 +145,14 @@
             <h1>How Does It Know The Way Out?</h1>
 
             <div class="description">
-                <p> Many believe that Tic-Tac-Toe is a game of chance. But in reality, this is not the case. Any game, whose entire outcomes can be figured out, can easily be conquered. And Tic-Tac-Toe is one such game.</p>
-                <p> There are <span style="color: yellow">255,168</span> unique games of Tic-Tac-Toe. Computers being fast, dont even take considerable amount of time to examine all those individual states. So, with that being said, lets see why you weren't able to beat the <span style="color:#66FCF1">AI</span>.</p>
-                <p> TicTac<span style="color: #09CA13">Ly</span> examines all the existing states of Tic-Tac-Toe and makes the move according to the human player's. TicTac<span style="color: #09CA13">Ly</span> has only been fed with the rules of the game as constraints. The move that it makes heavily depends on an algorithm called <span style="color:#66FCF1">Minimax</span>.</p>
-                <p><span style="color:#66FCF1">Minimax</span> algorithm suggests the <span style="color:#66FCF1">AI</span> to play <span style="color: yellow">the most optimal move</span> considering that the human player has <span style="color: yellow">already made an optimal move</span>. So, whenever you try to win by matching the three Os together, you simply can't since the <span style="color:#66FCF1">AI</span> has already foreseen it and plays in such a way that you can't win. Interestingly, I haven't taught the <span style="color:#66FCF1">AI</span> to block or create traps. <span style="color:#66FCF1">It figures it out on its own</span>.</p>
-
+                <p>First of all, it is imperative to figure out whether the given puzzle is <span style="color:orange">solvable</span> or not. Luckily, for you I will be providing only those random board configurations which are <span style="color:orange">solvable</span>. Now, you might be wondering how did I do that. Well, 8<span style="color:#BE073F">Ly</span> generates a random board and checks the number of <a href="https://math.stackexchange.com/questions/293527/how-to-check-if-a-8-puzzle-is-solvable" target="_blank" >inversions</a>. If the number of inversions are <span style="color:orange">EVEN, then it is solvable</span> otherwise, not. </p>
+                <p>Coming to the <span style="color:#66FCF1">AI</span> part. Unlike the case of TicTacToe, 8Puzzle problem demands a more dedicated <span style="color:yellow">search-based solution</span> approach. To implement it, 8<span style="color:#BE073F">Ly</span> makes use of a clever heuristic search; <span style="color:#0092cc">Best First Search</span>, to be precise.</p>
+                <p><span style="color:#0092cc">Best First Search</span> is a reasoning based <span style="color:yellow">state space tree traversal technique</span> which relies on a strong logic, commonly called a <span style="color:rgb(209, 10, 209)">heuristic</span>. Heuristic is something which guides the <span style="color:#66FCF1">AI</span> through the <span style="color: yellow">most promising paths</span> to reach its goal state. The heuristic used here to solve 8Puzzle is the <span style="color:#66FCF1">Manhattan Distance</span>.</p>
+                <p>So next time, when you feel like there is no way out, consider letting the <span style="color:#66FCF1">AI</span> take the control. Then, you sit back and relax while the 8<span style="color:#BE073F">Ly</span> solves from where you left off. </p>
             </div>
         </div>
     </section>
+    <!-- <script src="js/8puzzle.js"></script> -->
     <script src="js/8puzzle.js"></script>
     
 
