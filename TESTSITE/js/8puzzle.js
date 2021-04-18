@@ -74,54 +74,6 @@ function fillBoard(){
     }
 }
 
-function gameOverCopy(real){
-    var count = 0;
-    for(var i=0; i<9; i++)
-    {
-        if(real[i] == solvedBoard[i])
-        {
-            count++;
-        }
-    }
-    if (count == 9){
-        return 0;
-    }
-    else
-    return 1;
-}
-
-function compare(a, b){
-    for(var i=0; i<a.length; i++)
-    {
-        if (a[i] != b[i]){
-            return 1;
-        }
-    }
-    return 0;
-}
-
-function heuristics(real){
-    var sum = 0;
-    for(var i = 0; i<real.length; i++){
-        var val = real[i];
-        if (val != 0){
-            sum += Math.abs((val-1)%3 - i%3);
-            sum += Math.abs(Math.floor((val-1)/3) - Math.floor(i/3));
-        }
-    }
-    return sum;
-}
-
-function min(real){
-    var mini = 99999999;
-    for(var i=0; i<real.length; i++){
-        if(real[i]<mini){
-            mini = real[i];
-            var pos = i;
-        }
-    }
-    return pos;
-}
 
 function aiSolves(){
     let realBoardCopy = [];
@@ -271,24 +223,81 @@ function aiSolves(){
 
     console.log(steps);
     stepsolve();
+    
      
 }
 
+
+function gameOverCopy(real){
+    var count = 0;
+    for(var i=0; i<9; i++)
+    {
+        if(real[i] == solvedBoard[i])
+        {
+            count++;
+        }
+    }
+    if (count == 9){
+        return 0;
+    }
+    else
+    return 1;
+}
+
+function compare(a, b){
+    for(var i=0; i<a.length; i++)
+    {
+        if (a[i] != b[i]){
+            return 1;
+        }
+    }
+    return 0;
+}
+
+function heuristics(real){
+    var sum = 0;
+    for(var i = 0; i<real.length; i++){
+        var val = real[i];
+        if (val != 0){
+            sum += Math.abs((val-1)%3 - i%3);
+            sum += Math.abs(Math.floor((val-1)/3) - Math.floor(i/3));
+        }
+    }
+    return sum;
+}
+
+function min(real){
+    var mini = 99999999;
+    for(var i=0; i<real.length; i++){
+        if(real[i]<mini){
+            mini = real[i];
+            var pos = i;
+        }
+    }
+    return pos;
+}
+
+
 function stepsolve(){
     var i = 0;                  
-
+    var solved = 0;
     function myLoop() {         
       setTimeout(function() {   
         action(i);   
-        i++;                    
+        i++;               
         if (i < steps.length) { 
-          myLoop();              
+          myLoop();
+          if (i == steps.length-1){
+              solved = 1;
+          }              
         }                       
       }, 500)
     }
     
-    myLoop();  
+    myLoop();
+    
 }
+
 
 function action(i){
     var zero = emptySquare(realBoard);
@@ -329,9 +338,9 @@ function emptySquare(real){
 }
 
 function userPlays(){
-    aiSolves();
     if(checkWin()){
-        gameOver();
+        var winner = "human";
+        gameOver(winner);
     }
 
     else if(!aiNotSolving){
@@ -352,24 +361,33 @@ function checkWin(){
 }
 
 
-function gameOver(){
-    for(const button of buttons){
-        button.removeEventListener('click',clickHandler)
+function gameOver(who){
+    if(who == "human"){
+        for(const button of buttons){
+            button.removeEventListener('click',clickHandler)
+        }
+        alert('solved')
+    
     }
-    alert('solved')
+
+    else if(who == "ai"){
+        alert("solved")
+        playGame();
+    }
 
 }
 
 
 //event handlers
 function clickHandler(square){
-    var empty = emptySquare();
+    var empty = emptySquare(realBoard);
     if(square.target.id =="left"){
         if(empty%3 !=0){
             let temp = realBoard[empty];
             realBoard[empty] = realBoard[empty-1];
             realBoard[empty-1] = temp;
         }
+        console.log(realBoard);
         fillBoard();
         userPlays();
         
@@ -381,6 +399,7 @@ function clickHandler(square){
             realBoard[empty] = realBoard[empty-3];
             realBoard[empty-3] = temp;
         }
+        console.log(realBoard);
         fillBoard();
         userPlays();
         
@@ -392,6 +411,7 @@ function clickHandler(square){
             realBoard[empty] = realBoard[empty+1];
             realBoard[empty+1] = temp;
         }
+        console.log(realBoard);
         fillBoard();
         userPlays();
         
@@ -403,6 +423,7 @@ function clickHandler(square){
             realBoard[empty] = realBoard[empty+3];
             realBoard[empty+3] = temp;
         }
+        console.log(realBoard);
         fillBoard();
         userPlays();
         
@@ -414,6 +435,7 @@ function clickHandler(square){
 function helpmeHandler(square){
     aiNotSolving = false;
     aiSolves();
+    aiTurn.removeEventListener('click',helpmeHandler)
 }
 
 
